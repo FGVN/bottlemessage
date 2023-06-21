@@ -21,11 +21,11 @@ C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\staticweb
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\scopedcss\bundle\bottlemessage.styles.css
-C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\scopedcss\projectbundle\bottlemessage.bundle.scp.css
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\bottlemessage.dll
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\refint\bottlemessage.dll
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\bottlemessage.pdb
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\bottlemessage.genruntimeconfig.cache
 C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\ref\bottlemessage.dll
+C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\wez\source\repos\bottlemessage\bottlemessage\obj\Debug\net6.0\scopedcss\projectbundle\bottlemessage.bundle.scp.css

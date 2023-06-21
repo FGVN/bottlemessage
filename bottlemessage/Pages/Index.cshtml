@@ -7,27 +7,35 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4" style="margin-top: 10vw;">Message in the bottle website</h1>
+    <p>Here you can send a message to a stranger once in 24 hours and receive one from another</p>
 
-@if (Model.Request.Cookies["sendDate"] == null)
+    <br>
+    <br>
+
+    @if (Model.Request.Cookies["sendDate"] == null || 
+     86400 < (DateTime.Now.Ticks / 10000000)
+     - (Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Ticks / 10000000))
 {
     <form asp-page-handler="Post">
-        <input type="text" name="msg" />
-        <input type="submit" />
+        <input type="text" name="msg" autocomplete="off"/>
+        <input type="submit" value="Send"/>
     </form>
     <br>
     <br>
 }
-@if(Model.Request.Cookies["retrievedMessage"] != null)
-{
-    <h1>@Model.Request.Cookies["retrievedMessage"]</h1>
-    <h1 id="countdown" class="countdown"></h1>
-}
+    @if(Model.Request.Cookies["retrievedMessage"] != null)
+    {
+        <h1>@Model.Request.Cookies["retrievedMessage"]</h1>
+        <h1 id="countdown" class="countdown"></h1>
+    }
+</div>
+
+
 
 <script>
-    var countDownDate = new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
+    var countDownDate = 
+    new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {
