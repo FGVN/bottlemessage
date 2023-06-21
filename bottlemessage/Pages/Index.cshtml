@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@if (Model.Request.Cookies["sendDate"] == null)
+{
+    <form asp-page-handler="Post">
+        <input type="text" name="msg" />
+        <input type="submit" />
+    </form>
+    <br>
+    <br>
+}
+@if(Model.Request.Cookies["retrievedMessage"] != null)
+{
+    <h1>@Model.Request.Cookies["retrievedMessage"]</h1>
+    <h1 id="countdown" class="countdown"></h1>
+}
+
+<script>
+    var countDownDate = new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = now - countDownDate;
+
+        // Time calculations for days, hours, minutes and seconds
+        var hours = 23 - Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = 59 - Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = 59 - Math.floor((distance % (1000 * 60)) / 1000);
+
+
+        // Display the result in the element with id="demo"
+        document.getElementById("countdown").innerHTML = (hours + ":"
+            + minutes + ":" + seconds);
+
+    }, 1000);
+
+</script>
