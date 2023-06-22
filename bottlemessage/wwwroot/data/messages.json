@@ -1,12 +1,7 @@
 [
   {
     "_id": "::1",
-    "_message": "hello and welcome",
-    "_sendDate": "2023-06-21T13:16:50.5767713+03:00"
-  },
-  {
-    "_id": "::1",
-    "_message": "hi",
-    "_sendDate": "2023-06-21T14:11:43.3701084+03:00"
+    "_message": "Hello and welcome. If you are reading this -  its means that you are the first visitor of this site. Congratulations!",
+    "_sendDate": "2023-06-22T15:59:12.4106902+03:00"
   }
 ]

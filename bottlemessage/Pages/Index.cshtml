@@ -7,8 +7,8 @@
 
 
 <div class="text-center">
-    <h1 class="display-4" style="margin-top: 10vw;">Message in the bottle website</h1>
-    <p>Here you can send a message to a stranger once in 24 hours and receive one from another</p>
+    <h1 class="display-4" style="margin-top: 10vw;">Message in the bottle</h1>
+    <p>Here you can send a message to a stranger once in 24 hours and receive one from someone</p>
 
     <br>
     <br>
@@ -50,6 +50,13 @@
         var hours = 23 - Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = 59 - Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = 59 - Math.floor((distance % (1000 * 60)) / 1000);
+
+        if(hours < 10)
+            hours = "0" + hours.toString();
+        if(minutes < 10)
+            minutes = "0" + minutes.toString();
+        if(seconds < 10)
+            seconds = "0" + seconds.toString();
 
 
         // Display the result in the element with id="demo"

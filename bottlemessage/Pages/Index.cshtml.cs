@@ -21,14 +21,6 @@ namespace bottlemessage.Pages
 
         public void OnGet()
         {
-            if(Request.Cookies["sendDate"] != null)
-            {
-                
-                Console.WriteLine("Diff date: " +
-                    (DateTime.Now.Ticks / 10000000
-                    - Convert.ToDateTime(Request.Cookies["sendDate"]).Ticks / 10000000));
-            }
-
 
         }
 
