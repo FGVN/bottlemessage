@@ -17,16 +17,6 @@ html {
   min-height: 100%;
 }
 
-body {
-    margin-bottom: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: transparent;
-    color: #E5E0FF;
-    background-image: url("https://images.unsplash.com/photo-1522620660926-f8cbcf6266ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80");
-    font-family: Arial, Helvetica, sans-serif;
-    background-size: cover;
-}
-
 input {
     -webkit-appearance: none;
     background-color: #8EA7E9;

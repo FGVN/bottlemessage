@@ -5,6 +5,18 @@
 }
 
 
+<style>
+    body {
+        margin-bottom: 60px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: transparent;
+        color: #E5E0FF;
+        background-image: url(@Model._images[Model._random.Next(0, Model._imagesLen)]);
+        font-family: Arial, Helvetica, sans-serif;
+        background-size: cover;
+    }
+</style>
+
 
 <div class="text-center">
     <h1 class="display-4" style="margin-top: 10vw;">Message in the bottle</h1>
@@ -35,7 +47,10 @@
 
 <script>
     var countDownDate = 
-    new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
+    new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() 
+    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), 
+    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() 
+    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {
