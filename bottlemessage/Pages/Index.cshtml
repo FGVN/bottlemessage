@@ -24,18 +24,19 @@
 
     <br>
     <br>
-
+@*
+    displaying page content so if message is sent send date is not null or 24 has not passed yet*@
     @if (Model.Request.Cookies["sendDate"] == null || 
      86400 < (DateTime.Now.Ticks / 10000000)
      - (Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Ticks / 10000000))
-{
-    <form asp-page-handler="Post">
-        <input type="text" name="msg" autocomplete="off"/>
-        <input type="submit" value="Send"/>
-    </form>
-    <br>
-    <br>
-}
+    {
+        <form asp-page-handler="Post">
+            <input type="text" name="msg" autocomplete="off"/>
+            <input type="submit" value="Send"/>
+        </form>
+        <br>
+        <br>
+    }
     @if(Model.Request.Cookies["retrievedMessage"] != null)
     {
         <h1>@Model.Request.Cookies["retrievedMessage"]</h1>
@@ -46,11 +47,9 @@
 
 
 <script>
+    // Converting c# DateTime into js Date to start counting down 24 hours
     var countDownDate = 
-    new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString() 
-    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), 
-    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString() 
-    @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
+    new Date("@Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Month.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Day.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).Year.ToString(), @Convert.ToDateTime(Model.Request.Cookies["sendDate"]).TimeOfDay.ToString()").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {

@@ -11,13 +11,14 @@ namespace bottlemessage.Pages
         private readonly ILogger<IndexModel> _logger;
 
         public MessageController _messageController;
-
+        //to get all images urls
         public List<string> _images;
-
+        //to randomly select background image from list
         public Random _random;
-
+        //length of list of images
         public int _imagesLen;
 
+        //initializing messages controller and random
         public IndexModel(ILogger<IndexModel> logger,
                           JsonMessageService msgservice)
         {
@@ -26,6 +27,7 @@ namespace bottlemessage.Pages
             _random = new Random();
         }
 
+        //assigning values to images list from controller and its length variable
         public void OnGet()
         {
             ImageController imageController = new ImageController();
@@ -34,12 +36,12 @@ namespace bottlemessage.Pages
             for (int i = 0; i < _images.ToArray().Length; i++)
             {
                 _images[i] = _images[i].Replace("\\", string.Empty);
-                Console.WriteLine(i);
             }
 
             _imagesLen = _images.ToArray().Length;
         }
 
+        //getting msg form value, setting ip address, message value and send date into cookie
         public IActionResult OnPost()
         {
             var msg = Request.Form["msg"];

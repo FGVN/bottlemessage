@@ -8,21 +8,22 @@ namespace bottlemessage.Services
     {
 
         public IWebHostEnvironment WebHostEnvironment { get; }
-        public JsonMessageService(IWebHostEnvironment webHostEnvironment)
-        {
-            WebHostEnvironment = webHostEnvironment;
-        }
+        public JsonMessageService(IWebHostEnvironment webHostEnvironment) => WebHostEnvironment = webHostEnvironment;
 
-        private string JsonFileName
-        {
-            get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "messages.json"); }
-        }
+        /// <summary>
+        /// Sets path to the json file
+        /// </summary>
+        private string JsonFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "messages.json");
 
-        public List<Message> GetMessages()
+        /// <summary>
+        /// Gets message from json file
+        /// </summary>
+        /// <returns>Message saved in json file if it is now empty</returns>
+        public Message GetMessage()
         {
             using var jsonFileReader = File.OpenText(JsonFileName);
-            var empty = new List<Message>();
-            var res = JsonSerializer.Deserialize<List<Message>>(jsonFileReader.ReadToEnd(),
+            var empty = new Message();
+            var res = JsonSerializer.Deserialize<Message>(jsonFileReader.ReadToEnd(),
                 new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -32,39 +33,40 @@ namespace bottlemessage.Services
             return empty;
         }
 
+        /// <summary>
+        /// Puts new users message into json
+        /// </summary>
+        /// <param name="toAdd">Message to add to json</param>
+        /// <returns>Previous message from json if ip is different from previous</returns>
         public string AddMessage(Message toAdd)
         {
-            var messages = GetMessages();
+            var message = GetMessage();
 
-            messages.Add(toAdd);
-
-
-
-            Random rand = new Random();
-            var randmsg = messages.ToArray()[rand.Next(0, messages.Count())];
-            while (randmsg._id == toAdd._id)
+            if (message._id == toAdd._id || message._id == "")
             {
-                randmsg = messages.ToArray()[rand.Next(0, messages.Count())];
+                return "Sorry it looks like there is no new message for you\nMaybe tell your friends about this site?";
             }
 
-            messages.Remove(messages.First(x => x._id == randmsg._id));
+            var result = message;
+            //Remove previous message and add new to the json
+            message = toAdd;
 
 
             File.WriteAllText(JsonFileName, string.Empty);
 
             using var outputStream = File.OpenWrite(JsonFileName);
 
-            JsonSerializer.Serialize<IEnumerable<Message>>(
+            JsonSerializer.Serialize<Message>(
                 new Utf8JsonWriter(outputStream, new JsonWriterOptions
                 {
                     SkipValidation = true,
                     Indented = true
                 }),
-                messages
+                message
             );
 
 
-            return randmsg._message;
+            return result._message;
         }
 
         

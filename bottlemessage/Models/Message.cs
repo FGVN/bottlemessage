@@ -1,5 +1,8 @@
 ﻿namespace bottlemessage.Models
 {
+    /// <summary>
+    /// Data structure that describes message
+    /// </summary>
     public class Message
     {
         public string _id { get; set; }
